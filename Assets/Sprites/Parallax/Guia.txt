@@ -1,0 +1,9 @@
+City1Pan= Lo max cercano
+light = segundo
+smog1 = tercero
+Cityplan2 = cuarto
+smog2 = quinto
+city plan 3 = sexto
+city plan 4 = séptimo
+background = ultimo
+Sol

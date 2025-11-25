@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    public Rigidbody2D rb;
+
+    public float Speed = 1f;
+    public float JumpForce = 5;
     public float DetectSize = 0.1f;
     public float Distance = 0.1f;
     private bool isGrounded;
@@ -10,13 +15,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+
+        PlayerController.Instance.InputManager.OnJumpPerformed += Jump;
+
+        SoundManager.Instance.PlaySound("JumpSFX", 10);
     }
 
    
     void Update()
     {
         isGrounded = CheckIfGrounded();
+    }
+
+    public void Jump()
+    {
+
+    }
+
+    public void Movement()
+    {
+
     }
 
     public bool CheckIfGrounded()
@@ -29,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
             GameObject go = coll.collider.gameObject;
             if (go.tag == "Ground")
             {
-                print(go.name);
+                //print(go.name);
                 return true;
             }
         }
@@ -39,4 +58,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool IsGrounded => isGrounded;
+
+
 }

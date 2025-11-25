@@ -26,16 +26,27 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = CheckIfGrounded();
-    }
 
+        Movement();
+    }
     public void Jump()
     {
+        if (!isGrounded) return;
 
+        rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
     }
 
     public void Movement()
     {
+        Vector2 dir = (PlayerController.Instance.InputManager.MoveInput).normalized;
 
+        dir *= Speed;
+
+        Vector2 currentLinear = rb.linearVelocity;
+
+        dir.y = currentLinear.y;
+
+        rb.linearVelocity = dir;
     }
 
     public bool CheckIfGrounded()
